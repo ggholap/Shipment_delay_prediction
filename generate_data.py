@@ -102,22 +102,3 @@ if __name__ == "__main__":
     new = new.drop(columns=["delivery_hours"])
     new.to_csv("data/new_shipments.csv", index=False)
     print(len(hubs), len(raw), len(new))
-
-hubs_df = pd.read_csv("/content/data/hubs.csv")
-hubs_df.head() 
-
-raw_ship_df = pd.read_csv("/content/data/raw_shipments.csv")
-raw_ship_df.head()
-
-new_ship_df = pd.read_csv("/content/data/new_shipments.csv")
-new_ship_df.head()
-
-PROMISED_HOURS = {"Express": 36, "Standard": 60, "Economy": 96}
-FEATURES = [
-    "promised_hours", "distance_km", "parcel_weight_kg", "log_declared_value", "n_stops",
-    "rain_flag", "sale_event_flag", "is_cod", "is_weekend", "dispatch_hour",
-    "hub_tier", "hub_daily_capacity",
-    "label_print_batch", "scanner_build_no", "tape_roll_no", "sticker_serial_mod", "shelf_slot_no",
-]
-NOISE_COLUMNS = ["label_print_batch", "scanner_build_no", "tape_roll_no", "sticker_serial_mod", "shelf_slot_no"]
-new_ship_df.head()
