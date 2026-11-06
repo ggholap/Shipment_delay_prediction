@@ -12,7 +12,7 @@ from sklearn.feature_selection import SelectKBest,f_classif
 import json
 from src.shipment_prep import FEATURES, NOISE_COLUMNS
 
-model_table = pd.read_csv("/content/data/modelling_table.csv")
+model_table = pd.read_csv("/data/modelling_table.csv")
 model_table.head()
 model_table.columns.to_list()
 x= model_table[FEATURES]
