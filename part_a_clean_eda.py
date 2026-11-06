@@ -11,8 +11,8 @@ importlib.reload(src.shipment_prep)
 from src.shipment_prep import clean_shipments, build_features, FEATURES, PROMISED_HOURS
 
 os.makedirs("outputs", exist_ok=True)
-raw = pd.read_csv("/content/data/raw_shipments.csv")
-hubs = pd.read_csv("/content/data/hubs.csv")
+raw = pd.read_csv("/data/raw_shipments.csv")
+hubs = pd.read_csv("/data/hubs.csv")
 dup_raw = raw.drop_duplicates()
 
 clean, medians = clean_shipments(raw)
