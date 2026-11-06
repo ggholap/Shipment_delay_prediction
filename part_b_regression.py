@@ -10,7 +10,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 
-model_table = pd.read_csv("/content/data/modelling_table.csv")
+model_table = pd.read_csv("/data/modelling_table.csv")
 model_table.head()
 model_table.columns.to_list()
 x= model_table[FEATURES]
@@ -31,7 +31,7 @@ print("x_train:",len(x_train))
 print("x_val:",len(x_val))
 print("x_test:",len(x_test))
 split_check = pd.DataFrame({"metric":["train_rows", "val_rows", "test_rows", "train_scaled_max_abs_mean", "test_scaled_max_abs_mean"],
-                            "value":[len(x_train),len(x_val),len(x_test),np.abs(x_train_scaled.mean(axis=0)).max(),np.abs(x_test_scaled.mean(axis=0)).max()]}).round(4).to_csv("/content/outputs/part_b_checks.csv")
+                            "value":[len(x_train),len(x_val),len(x_test),np.abs(x_train_scaled.mean(axis=0)).max(),np.abs(x_test_scaled.mean(axis=0)).max()]}).round(4).to_csv("/outputs/part_b_checks.csv")
 
 def mean_scores(y_true, pred):
     mse = mean_squared_error(y_true, pred)
@@ -50,7 +50,7 @@ for d in [1, 2, 3, 4, 6, 8, 12,None]:
   depth_rows.append({"max_depth":"unlimited" if d is None else d,"train_rmse":y_train_rmse,"val_rmse":y_val_rmse})
   if y_val_rmse < best_val - 1e-12:           # strict: ties keep the smaller depth
    best_val, best_depth = y_val_rmse, d
-pd.DataFrame(depth_rows).round(4).to_csv("/content/outputs/part_b_tree_depth.csv", index=False)
+pd.DataFrame(depth_rows).round(4).to_csv("/outputs/part_b_tree_depth.csv", index=False)
 #print("best_val:",best_val)
 #print("best_depth:",best_depth)
 four_candidates = {
