@@ -1,5 +1,5 @@
 #package_model.py
-"""Part D (2/3): rebuild Part C's final pipeline, save it with joblib and verify the reload."""
+
 import joblib
 import numpy as np
 import pandas as pd
@@ -9,10 +9,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import SelectKBest, f_classif
 from src.shipment_prep import FEATURES, clean_shipments
 
-cfg = pd.read_csv("/content/outputs/part_c_final_config.csv").iloc[0]
+cfg = pd.read_csv("/outputs/part_c_final_config.csv").iloc[0]
 max_depth = None if str(cfg["max_depth"]) == "unlimited" else int(cfg["max_depth"])
 
-table = pd.read_csv("/content/data/modelling_table.csv")
+table = pd.read_csv("/data/modelling_table.csv")
 X, y = table[FEATURES], table["is_delayed"]
 X_train, X_tmp, y_train, y_tmp = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
 X_val, X_test, y_val, y_test = train_test_split(X_tmp, y_tmp, test_size=0.5, random_state=42, stratify=y_tmp)
